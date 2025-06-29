@@ -16,4 +16,11 @@ def make_label(root) -> tk.Label: # Essa função precisa receber um parâmetro 
 def make_display(root) -> tk.Entry:
     display = tk.Entry(root)
     display.grid(row='1', column='0' , columnspan='5', sticky='news', pady=(0, 10))
-    display.config(font=('TimesNewRoman', 20, 'bold'), justify='right', bd=1, relief='flat',)
+    display.config(font=('TimesNewRoman', 20, 'bold'), justify='right', bd=1, relief='flat', highlightcolor='#ccc', highlightthickness='1')
+    display.bind('<Control-a>', _display_control_a)
+    return display # Sempre preciso retornar o parâmetro
+
+def _display_control_a(event): # Precisa ter o evento para pegar o texto e selecioná-lo
+    event.widget.select_range() # Esse select_range possui como função principal a 
+    event.widget.icursor('end') # Mover o cursor para o fim
+    return 'break'
