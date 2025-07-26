@@ -19,9 +19,10 @@ ______=`-(_)--(_)-'_____________________________________________________________
 """)
 
 print('BEM-VINDO AO BLABLACAR!')
-user_data = {'name_user': [], 'email_user': [], 'password_user': []}
-rides_data = {'origem': [], 'data': [], 'horario': [], 'vagas': [], 'valor_vaga': [], 'dono': []}
+user_data = {'name_user': [], 'email_user': [], 'password_user': [], 'type_user': []}
+rides_data = {'origem': [], 'destino': [], 'data': [], 'horario': [], 'vagas': [], 'valor_vaga': [], 'dono': [], 'id_vaga': []}
 while True:
+    print('#'*50)
     decision = int(input('Escolha uma opção abaixo:\n \
         1 - Cadastrar usuário\n \
         2 - Logar\n'))
@@ -40,6 +41,8 @@ while True:
                 continue
         senha_usuario = input('Insira uma senha:\n')
         user_data['password_user'].append(senha_usuario)
+        tipo_usuario = int(input('Qual tipo melhor define você?\n1 - Motorista\t2 - Passageiro\n'))
+        user_data['type_user'].append(tipo_usuario)
         print('Usuário cadastrado com sucesso!')
         print('Faça o seu login')
         continue
@@ -50,12 +53,14 @@ while True:
         nome_usuario = input('Insira o nome de usuário:\n')
         email_usuario = input('Insira um e-mail válido:\n')
         senha_usuario = input('Insira uma senha:\n')
+        
         if (nome_usuario in user_data):
             if (email_usuario in user_data):
                 if (senha_usuario in user_data):
                     print('Login bem-sucedido!')
                 else:
                     print('[ERRO]\nUsuário não cadastrado!')
+                    continue
                     
         while True:
             print('#'*50)
@@ -63,7 +68,7 @@ while True:
             login_out = input('Deseja fazer logout?\nS\tN\n')
             if (login_out == 's' or login_out == 'S'):
                 print('Login desfeito.')
-                exit()
+                break # Vai interromper esse laço de repetição
             if (login_out == 'n' or login_out == 'N'):
                 print('#'*50)
                 options = int(input('Escolha uma das opções abaixo:\n\t \
@@ -71,11 +76,13 @@ while True:
                     2 - Listar caronas disponíveis\n \
                     3 - Buscar carona por origem e destino\n \
                     4 - Reservar vaga\n'))
-                if (options == 1):
+                if (options == 1 and user_data['type_user'] == 1):
                     print('#'*50)
                     print('OPÇÃO ESCOLHIDA:\n1 - Cadastrar caronas')
                     origem_carona = input('Local de origem:\n')
                     rides_data['origem'].append(origem_carona)
+                    destino_carona = input('Local de destino:\n')
+                    rides_data['destino'].append(destino_carona)
                     rides_time = input('Data:\n')
                     rides_data['data'].append(rides_time)
                     rides_hour = input('Horário:\n')
@@ -90,6 +97,7 @@ while True:
 
                     print('Cadastro feito com sucesso!')
                     print(f'Origem: {rides_data["origem"][-1]}\n \
+                        Destino: {rides_data["destino"]}\n \
                         Data: {rides_data["data"][-1]}\n \
                         Horário: {rides_data["horario"][-1]}\n \
                         Vagas: {rides_data["vagas"][-1]}\n \
@@ -99,13 +107,35 @@ while True:
                     
                     cancel_ride = input('Deseja cancelar a carona?\n\n[ESSA AÇÃO NÃO PODE SER DESFEITA]')
                     if (cancel_ride == 's' or cancel_ride == 'S'):
-                        rides_data.clear()
+                        rides_data.pop()
                         print('Carona cancelada!')
                     elif (cancel_ride == 'n' or cancel_ride == 'N'):
                         continue
                 elif (options == 2):
                     print('#'*50)
                     print('OPÇÃO ESCOLHIDA:\n2 - Listar caronas disponíveis')
+                    print(f'Caronas disponíveis: {rides_data['dono', 'id_vaga']}')
+                    print(f'Vagas disponíveis: {rides_data["vagas"]}')
+                    reservar_vaga = input('Deseja reservar vaga?\nS\tN\n')
+                    if (reservar_vaga == 'S' or reservar_vaga == 's'):
+                        id_ride = int(input('Insira o ID: '))
+                        if (id_ride in rides_data['id_vaga']):
+                            rides_data['vagas'] -= 1
+                        if (rides_data['vagas'] == 0):
+                            print('Carona lotada!')
+                    elif (reservar_vaga == 'N' or reservar_vaga == 'n'):
+                        continue
+                elif (options == 3):
+                    print('#'*50)
+                    print('OPÇÃO ESCOLHIDA:\n3 - Buscar carona por origem e destino')
+                    search_ride = input('Insira o local de onde você deseja partir: ')
+                    if (search_ride in rides_data['origem']):
+                        print(f'Vagas disponíveis:\n{rides_data["origem"]}')
+                elif (options == 4):
+                    print('#'*50)
+                    print('OPÇÃO ESCOLHIDA:\n4 - Reservar vaga')
+                    
+                    
                     
     #                5 - Cancelar reserva\n \
     #                6 - Remover carona\n)
