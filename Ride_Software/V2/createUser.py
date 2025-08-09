@@ -1,25 +1,35 @@
-# Função para criar usuário
-
 def createUser():
-    user = {'complete name': [], 'email': [], 'password': []}
-    # Nome completo
-    username = input('Insert your complete name: ')
-    user['complete name'].append(username)
-    # E-mail deve ser único
-    user_email = input('Insert a valid e-mail: ')
-    if '@' in user_email and '.com' in user_email:
-        for i in user['email']:
-            if i not in user['email']:
-                user['email'].append(user_email)
-                break
+    # Criar um banco de dados usando dicionários
+    users = [] # Lista armazena os usuários
+    dataUsers = {'Complete name': '', 'Age': '', 'E-mail': '', 'Password': ''} # Dicionário com as informações de cada usuário
+    
+    userName = input('Insert your complete name: ')
+    dataUsers['Complete name'] = userName
+    
+    while True:
+        userAge = int(input('Insert your age: '))
+        if userAge >= 18:
+            dataUsers['Age'] = userAge
+            break
+        else:
+            print('YOU ARE MINOR\nPlease, try again\n')
+    
+    while True:
+        userEmail = input('Insert your e-mail: ')
+        if '@' in userEmail and '.com' in userEmail:
+            if any(user['E-Mail'] == userEmail for user in users):
+                print('[INVALID E-MAIL]\nPlease, try again')
             else:
-                print('[INVALID E-MAIL]\nYour e-mail needs to be unique.')
-    else:
-        print('[INVALID E-MAIL]')
-    # Senha
-    user_password = input('Insert a password: ')
-    user['password'].append(user_password)
-                
+                dataUsers['E-mail'] = userEmail
+                break
+        else:
+            print('[INVALID E-MAIL]\nPlease, try again')
+            
+    userPassword = input('Create your password: ')
+    dataUsers['Password'] = userPassword
+    
+    users.append(dataUsers)
+    
+    print(f'Parabéns, {userName}!\nSeu cadastro foi concluído com sucesso!')
+    
 createUser()
-
-# Seria interessante 
