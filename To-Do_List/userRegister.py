@@ -1,5 +1,4 @@
 # User need insert your e-mail OR username and password to log in system
-
 class userRegister:
     def userRegister():
         global usersTodolist
@@ -10,7 +9,7 @@ class userRegister:
         usersData['Name'] = userName
         while True:
             userEmail = input('E-mail: ').lower()
-            if '@' in userEmail and '.com' in userEmail:
+            if '@' not in userEmail and '.com' not in userEmail:
                 print('[E-MAIL INVÁLIDO]\nTente novamente\n')
             else:
                 usersData['E-mail'] = userEmail
@@ -21,3 +20,4 @@ class userRegister:
         usersTodolist.append(usersData)
         
         print(f'Usuário cadastrado com sucesso!')
+        

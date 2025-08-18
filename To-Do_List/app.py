@@ -10,8 +10,8 @@ print('Program initializated')
 print('*'*50)
 
 print('Welcome!')
-
 print('Please, log in the sistem or register new user')
+
 while True:
     print('#'*50)
     decision = int(input('1 - Login\t2 - User Register\n'))
