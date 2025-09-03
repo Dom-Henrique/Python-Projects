@@ -12,6 +12,7 @@ def UserRegister(username, useremail, userpassword):
     if '@' and '.com' in useremail:
         users_data['E-mail'].append(useremail)
     users_data['Password'].append(userpassword)
+    print(f'User regist successful!\nWelcome, {username}!')
     
 def UserLogin(UserRegister):
     for nome in users_data['Username']:
