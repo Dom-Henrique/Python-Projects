@@ -26,4 +26,25 @@
 - Sistema exibe os mesmos dados da 4° função.
 
 ## 6. Reservar carona
-- 
+- Usuário reserva carona;
+- Reduz uma vaga da carona;
+- Quando não há vagas, avisar ao usuário.
+***Dados de entrada: e-mail do motorista, data.***
+
+## 7. Cancelar reserva
+- Opção de cancelamento de reserva;
+- Quando cancelada, a vaga volta a ficar disponível
+
+## 8. Remover reserva
+- Retira os dados inseridos;
+- Informa ao usuário.
+
+## 9. Detalhes da carona
+- Exibe todos os detalhes das caronas;
+- Busca pore-mail e data da carona.
+
+***Dados de entrada: e-mail do motorista, data.***
+***Dados de saída: origem, destino, horário, valor, vagas restantes e passageiros.***
+
+## 10. Log Out
+- Sai e fecha o programa.
