@@ -1,28 +1,40 @@
-# Functions
-users_data = {'Username': [], 'E-mail': [], 'Password': []}
-valid_emails_types = [
-    '@gmail',
-    '@yahoo',
-    '@hotmail'
-    '@oulook'
-]
+# Cadastro e login
+import random
+import string # Permite a manipulação de dígitos
 
-def UserRegister(username, useremail, userpassword):
-    users_data['Username'].append(username)
-    if '@' and '.com' in useremail:
-        users_data['E-mail'].append(useremail)
-    users_data['Password'].append(userpassword)
-    print(f'User regist successful!\nWelcome, {username}!')
+def Sign_Up(username, email, password, user_data):
+    user_data['Username'].append(username)
+    for email in user_data['E-mail']:
+        if email not in user_data['E-mail']:
+            user_data['E-mail'].append(email)
+        else:
+            print("You can't storage doubles e-mail adresses")
+    user_data['Password'].append(password)
     
-def UserLogin(UserRegister):
-    for nome in users_data['Username']:
-        if nome in users_data['Username']:
-            True
-    for email in users_data['E-mail']:
-        if email in users_data['E-mail']:
-            True
-    for senha in users_data['Password']:
-        if senha in users_data['Password']:
-            True
+    print('User register sucessful!')
+    
+def Log_In(email, password, user_data):
+    for email in user_data['E-mail']:
+        if email == user_data['E-mail']:
+            for password in user_data['Password']: # Só executa se o e-mail for encontrado
+                if password == user_data['Password']:
+                    print('User founded!')
+                    print(f'Welcome')
+                else:
+                    print('Invalid password.')
+        else:
+            print('Invalid e-mail')
             
-            print(f'Welcome, {UserRegister.username}!')
+def Pasw_Gen():
+    maiusculas = list(string.ascii_uppercase)
+    minusculas = list(string.ascii_lowercase)
+    numeros = list(string.digits)
+    special_symbols = ['!', '@', '?', '&', '(', ')', '<', '>', '[', ']', '{', '}', '#', '%', '§']
+    pasw_caracteres = maiusculas + minusculas + numeros + special_symbols
+    
+    cont = 0
+    password = ''
+    while cont < 10:
+        password += random.choice(pasw_caracteres)
+        cont += 1
+    print(f'Your password: {password}')
