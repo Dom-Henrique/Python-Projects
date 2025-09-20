@@ -81,3 +81,33 @@ if main_menu == 1:
     value_per_vacancy = float(input('Insert the price: '))
     
     Reg_Ride(origin, destiny, ride_date, ride_time, vacancies, value_per_vacancy, rides_data, username)
+    
+elif main_menu == 2:
+    List_All_Rides(user_data, rides_data)
+    
+elif main_menu == 3:
+    origin = input('Insert your ride origin: ')
+    destiny = input('Insert your ride destiny: ')
+    Search_by_Origin_Destiny(rides_data=rides_data, origin=origin, destiny=destiny)
+    
+elif main_menu == 4:
+    email = input('Insert a valid e-mail: ')
+    ride_date = input('Insert your ride date: ')
+    Vac_Reserv(user_data=user_data, rides_data=rides_data, email=email, ride_date=ride_date)
+    
+elif main_menu == 5:
+    email = input('Insert a valid e-mail: ')
+    ride_date = input('Insert your ride date: ')
+    Vac_Cancel(email=email, ride_date=ride_date, user_data=user_data, rides_data=rides_data)
+    
+elif main_menu == 7:
+    email = input('Insert a valid e-mail: ')
+    ride_date = input('Insert your ride date: ')
+    Vac_Details(email=email, ride_date=ride_date, user_data=user_data, rides_data=rides_data)
+    
+elif main_menu == 8:
+    email = input('Insert a valid e-mail: ')
+    Show_Reg_Vac(user_data, rides_data, email)
+    
+elif main_menu == 9:
+    Logout()
