@@ -1,5 +1,4 @@
 import os
-import shutil
 
 def create_file(path):
     directory = input('Insira o diretório que você quer armazenar o arquivo: ')
@@ -13,7 +12,7 @@ def create_file(path):
         print('O tipo não é permitido.')
         
 def create_directory(path):
-    directory = input('Insira o diretório que você quer armazenar o arquivo: ')
+    directory = input('Insira onde você quer colocar o diretório: ')
     os.chdir(directory)
     try:
         os.mkdir(path)
@@ -66,14 +65,14 @@ while True:
         file_bacana = input('Insira o nome e extensão do arquivo: ')
         create_file(file_bacana)
     elif options == 2:
-        path = input('Insira o diretório: ')
+        path = input('Insira o nome do diretório que você quer criar: ')
         create_directory(path)
     elif options == 3:
         path = input('Insira o diretório: ')
         read_file(path)
     elif options == 4:
         path = input('Insira o diretório: ')
-        option = int(input("Deseja reescrever ou adicionar?\n1 - Reescrever\t2 - Adicionar"))
+        option = int(input("Deseja reescrever ou adicionar?\n1 - Reescrever\t2 - Adicionar\n\n"))
         if option == 1:
             update_file(path, function='w')
         elif option == 2:
