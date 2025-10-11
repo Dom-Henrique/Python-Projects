@@ -1,4 +1,5 @@
 import os
+import shutil
 
 def create_file(path):
     directory = input('Insira o diretório que você quer armazenar o arquivo: ')
@@ -59,8 +60,30 @@ def delete_directory(path):
     except TypeError:
         print('O tipo não é permitido.')
         
+def fileorganizer(path):
+    try:
+        files_p = os.listdir(path) # Vai listar todos as pastas dentro do caminho desejado
+
+        for files in files_p:
+            f_name, extension = os.path.splitext(files)
+            extension = extension[1:]
+            
+            if os.path.exists(path+'/'+extension):
+                shutil.move(path+'/'+files, path+'/'+extension+'/'+files)
+                
+                print('Succeded operation!')
+                print('Your files are organized now!')
+            else:
+                os.mkdirs(path+'/'+extension) # Cria um diretório
+                shutil.move(path+'/'+files, path+'/'+extension+'/'+files)
+                
+                print('Succeded operation!')
+                print('Your files are organized now!')
+    except FileNotFoundError:
+        print('Caminho não encontrado.')
+        
 while True:
-    options = int(input('1 - Create file\n2 - Create directory\n3 - Read\n4 - Update\n5 - Delete files\n6 - Delete directory\n7 - Exit\n\n'))
+    options = int(input('1 - Create file\n2 - Create directory\n3 - Read\n4 - Update\n5 - Delete files\n6 - Delete directory\n7 - Organize file\n8 - Exit\n\n'))
     if options == 1:
         file_bacana = input('Insira o nome e extensão do arquivo: ')
         create_file(file_bacana)
@@ -84,4 +107,7 @@ while True:
         path = input('Insira o diretório: ')
         delete_directory(path)
     elif options == 7:
+        path = input('Insira o diretório: ')
+        fileorganizer(path)
+    elif options == 8:
         exit()
