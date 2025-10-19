@@ -13,13 +13,13 @@ def Reg_Ride(origin, destiny, ride_date, ride_time, vacancies, value_vacancy, ri
     
 def List_All_Rides(user_data, rides_data):
     print('ALL RIDES AVAILBLE')
-    print(f'Rider Name: {user_data['Username']}')
-    print(f'Origin: {rides_data['Origin']}')
-    print(f'Destiny: {rides_data['Destiny']}')
-    print(f'Date of Ride: {rides_data['Date of Ride']}')
-    print(f'Time of Ride: {rides_data['Time of Ride']}')
-    print(f'Vacancies: {rides_data['Vacancies']}')
-    print(f'Value per Vacancy: {rides_data['Value per Vacancy']}')
+    print(f'Rider Name: {user_data["Username"]}')
+    print(f'Origin: {rides_data["Origin"]}')
+    print(f'Destiny: {rides_data["Destiny"]}')
+    print(f'Date of Ride: {rides_data["Date of Ride"]}')
+    print(f'Time of Ride: {rides_data["Time of Ride"]}')
+    print(f'Vacancies: {rides_data["Vacancies"]}')
+    print(f'Value per Vacancy: {rides_data["Value per Vacancy"]}')
     
 def Search_by_Origin_Destiny(origin, destiny, rides_data):
     for origin_search in rides_data['Origin']:
@@ -41,14 +41,14 @@ def Vac_Reserv(email, ride_date, user_data, rides_data):
                     print(f'Availble rides:').upper()
                     print(f'Ride founded!')
                     print(f'Rider e-mail: {email}')
-                    print(f'Ride Origin: {rides_data['Origin'].index(email)}')
-                    print(f'Ride Destiny: {rides_data['Destiny'].index(email)}')
-                    print(f'Date of Ride: {rides_data['Date of Ride'].index(email)}')
-                    print(f'Time of Ride: {rides_data['Time of Ride'].index(email)}')
-                    print(f'Vacancies: {rides_data['Vacancies'].index(email)}')
-                    print(f'Value per Vacancy: {rides_data['Value per Vacancy'].index(email)}')
+                    print(f'Ride Origin: {rides_data["Origin"].index(email)}')
+                    print(f'Ride Destiny: {rides_data["Destiny"].index(email)}')
+                    print(f'Date of Ride: {rides_data["Date of Ride"].index(email)}')
+                    print(f'Time of Ride: {rides_data["Time of Ride"].index(email)}')
+                    print(f'Vacancies: {rides_data["Vacancies"].index(email)}')
+                    print(f'Value per Vacancy: {rides_data["Value per Vacancy"].index(email)}')
                     
-                    rides_data['Vacancies'].index(email) -= 1
+                    rides_data["Vacancies"].remove(email)
                     if rides_data['Vacancies'].index(email) == 0:
                         print("Sorry, we don't have vacancies.")
                     else:
@@ -59,7 +59,7 @@ def Vac_Cancel(email, ride_date, user_data, rides_data):
         if email_search == email:
             for ride_date_search in user_data['Date of Ride']:
                 if ride_date_search == ride_date:
-                    rides_data['Vacancies'].index(email) += 1
+                    rides_data['Vacancies'].insert(email, 1)
                     
                     print(f"Reserve canceled!")
                     
@@ -83,12 +83,12 @@ def Vac_Details(email, ride_date, user_data, rides_data):
                     print(f'Availble rides:').upper()
                     print(f'Ride founded!')
                     print(f'Rider e-mail: {email}')
-                    print(f'Ride Origin: {rides_data['Origin'].index(email)}')
-                    print(f'Ride Destiny: {rides_data['Destiny'].index(email)}')
-                    print(f'Date of Ride: {rides_data['Date of Ride'].index(email)}')
-                    print(f'Time of Ride: {rides_data['Time of Ride'].index(email)}')
-                    print(f'Vacancies: {rides_data['Vacancies'].index(email)}')
-                    print(f'Value per Vacancy: {rides_data['Value per Vacancy'].index(email)}')
+                    print(f'Ride Origin: {rides_data["Origin"].index(email)}')
+                    print(f'Ride Destiny: {rides_data["Destiny"].index(email)}')
+                    print(f'Date of Ride: {rides_data["Date of Ride"].index(email)}')
+                    print(f'Time of Ride: {rides_data["Time of Ride"].index(email)}')
+                    print(f'Vacancies: {rides_data["Vacancies"].index(email)}')
+                    print(f'Value per Vacancy: {rides_data["Value per Vacancy"].index(email)}')
                     
 def Show_Reg_Vac(user_data, rides_data, email): # Caronas cadastradas do usuário logado
     for email_search in user_data['E-mail']:
@@ -96,10 +96,10 @@ def Show_Reg_Vac(user_data, rides_data, email): # Caronas cadastradas do usuári
             print(f'Availble rides:').upper()
             print(f'Ride founded!')
             print(f'Rider e-mail: {email}')
-            print(f'Ride Origin: {rides_data['Origin'].index(email)}')
-            print(f'Ride Destiny: {rides_data['Destiny'].index(email)}')
-            print(f'Date of Ride: {rides_data['Date of Ride'].index(email)}')
-            print(f'Time of Ride: {rides_data['Time of Ride'].index(email)}')
-            print(f'Vacancies: {rides_data['Vacancies'].index(email)}')
-            print(f'Value per Vacancy: {rides_data['Value per Vacancy'].index(email)}')
+            print(f'Ride Origin: {rides_data["Origin"].index(email)}')
+            print(f'Ride Destiny: {rides_data["Destiny"].index(email)}')
+            print(f'Date of Ride: {rides_data["Date of Ride"].index(email)}')
+            print(f'Time of Ride: {rides_data["Time of Ride"].index(email)}')
+            print(f'Vacancies: {rides_data["Vacancies"].index(email)}')
+            print(f'Value per Vacancy: {rides_data["Value per Vacancy"].index(email)}')
             
