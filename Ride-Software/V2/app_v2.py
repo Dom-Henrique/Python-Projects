@@ -59,55 +59,56 @@ elif options == 2:
         
 else:
     print('ERROR')
-    
-main_menu = int(input("Please, choose one options below:\n\
-1 - Ride register\n\
-2 - List all rides availbles\n\
-3 - Search Ride by origin and destiny locations\n\
-4 - Vacation Reserv\n\
-5 - Cancel Ride\n\
-6 - Ride Remove\n\
-7 - Ride Details\n\
-8 - Show Rides\n\
-9 - Log out\n"))
 
-if main_menu == 1:
-    print('Option choosed: Ride register')
-    origin = input('Insert your ride origin: ')
-    destiny = input('Insert your ride destiny: ')
-    ride_date = input('Insert your ride date: ')
-    ride_time = input('Insert your ride time: ')
-    vacancies = int(input('Insert the quantity of vacancies: '))
-    value_per_vacancy = float(input('Insert the price: '))
-    
-    Reg_Ride(origin, destiny, ride_date, ride_time, vacancies, value_per_vacancy, rides_data, username)
-    
-elif main_menu == 2:
-    List_All_Rides(user_data, rides_data)
-    
-elif main_menu == 3:
-    origin = input('Insert your ride origin: ')
-    destiny = input('Insert your ride destiny: ')
-    Search_by_Origin_Destiny(rides_data=rides_data, origin=origin, destiny=destiny)
-    
-elif main_menu == 4:
-    email = input('Insert a valid e-mail: ')
-    ride_date = input('Insert your ride date: ')
-    Vac_Reserv(user_data=user_data, rides_data=rides_data, email=email, ride_date=ride_date)
-    
-elif main_menu == 5:
-    email = input('Insert a valid e-mail: ')
-    ride_date = input('Insert your ride date: ')
-    Vac_Cancel(email=email, ride_date=ride_date, user_data=user_data, rides_data=rides_data)
-    
-elif main_menu == 7:
-    email = input('Insert a valid e-mail: ')
-    ride_date = input('Insert your ride date: ')
-    Vac_Details(email=email, ride_date=ride_date, user_data=user_data, rides_data=rides_data)
-    
-elif main_menu == 8:
-    email = input('Insert a valid e-mail: ')
-    Show_Reg_Vac(user_data, rides_data, email)
-    
-elif main_menu == 9:
-    Logout()
+while True:
+    main_menu = int(input("Please, choose one options below:\n\
+    1 - Ride register\n\
+    2 - List all rides availbles\n\
+    3 - Search Ride by origin and destiny locations\n\
+    4 - Vacation Reserv\n\
+    5 - Cancel Ride\n\
+    6 - Ride Remove\n\
+    7 - Ride Details\n\
+    8 - Show Rides\n\
+    9 - Log out\n"))
+
+    if main_menu == 1:
+        print('Option choosed: Ride register')
+        origin = input('Insert your ride origin: ')
+        destiny = input('Insert your ride destiny: ')
+        ride_date = input('Insert your ride date: ')
+        ride_time = input('Insert your ride time: ')
+        vacancies = int(input('Insert the quantity of vacancies: '))
+        value_per_vacancy = float(input('Insert the price: '))
+
+        Reg_Ride(origin, destiny, ride_date, ride_time, vacancies, value_per_vacancy, rides_data, username)
+
+    elif main_menu == 2:
+        List_All_Rides(user_data, rides_data)
+
+    elif main_menu == 3:
+        origin = input('Insert your ride origin: ')
+        destiny = input('Insert your ride destiny: ')
+        Search_by_Origin_Destiny(rides_data=rides_data, origin=origin, destiny=destiny)
+
+    elif main_menu == 4:
+        email = input('Insert a valid e-mail: ')
+        ride_date = input('Insert your ride date: ')
+        Vac_Reserv(user_data=user_data, rides_data=rides_data, email=email, ride_date=ride_date)
+
+    elif main_menu == 5:
+        email = input('Insert a valid e-mail: ')
+        ride_date = input('Insert your ride date: ')
+        Vac_Cancel(email=email, ride_date=ride_date, user_data=user_data, rides_data=rides_data)
+
+    elif main_menu == 7:
+        email = input('Insert a valid e-mail: ')
+        ride_date = input('Insert your ride date: ')
+        Vac_Details(email=email, ride_date=ride_date, user_data=user_data, rides_data=rides_data)
+
+    elif main_menu == 8:
+        email = input('Insert a valid e-mail: ')
+        Show_Reg_Vac(user_data, rides_data, email)
+
+    elif main_menu == 9:
+        Logout()
